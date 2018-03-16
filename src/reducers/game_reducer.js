@@ -2,7 +2,18 @@ import types from '../actions/types';
 
 const DEFAULT_STATE = {
 	numberOfCards: 0,
-	cardFronts: []
+	numberOfMatches: 0,
+	cardFronts: [],
+	gameBoardCheck: [],
+	firstCardClicked: {
+		image: null,
+		index: null
+	},
+	secondCardClicked: {
+		image: null,
+		index: null
+	},
+	attempts: 0
 };
 
 export default function(state = DEFAULT_STATE, action) {
@@ -34,8 +45,23 @@ export default function(state = DEFAULT_STATE, action) {
 			}
 
 			return {
-				cardFronts: randomSelectionArray
+				cardFronts: randomSelectionArray,
+				numberOfCards: randomSelectionArray.length,
+				gameBoardCheck: new Array(randomSelectionArray.length).fill(false)
 			};
+		case types.CHECK_CARD:
+			console.log('action.payload: ', action.payload);
+			//check corresponding index in gameBoardCheck
+			//if false: turn to true
+			//if true: return state
+			//check if firstCardClicked is null
+			//if null: set to action.payload.cardFront; return state
+			//if not null: set to secondCardClicked
+			//check if firstCardClicked and secondCardClicked are the same
+			//if true : increment numberOfMatches
+			//if false: change corresponding indexes in gameBoardCheck to false, increment attempts
+
+			return state;
 		default:
 			return state;
 	}

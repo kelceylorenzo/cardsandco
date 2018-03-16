@@ -7,3 +7,10 @@ export function selectCards() {
 		payload: gameImages
 	};
 }
+
+export function checkCard(event, cardFront, cardIndex) {
+	return {
+		type: types.CHECK_CARD,
+		payload: { event, cardFront, cardIndex }
+	};
+}
