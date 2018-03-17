@@ -8,9 +8,17 @@ export function selectCards() {
 	};
 }
 
-export function checkCard(event, cardFront, cardIndex) {
+export function checkCard(
+	// event,
+	cardFront,
+	cardIndex
+) {
 	return {
 		type: types.CHECK_CARD,
-		payload: { event, cardFront, cardIndex }
+		payload: {
+			// event,
+			cardFront,
+			cardIndex
+		}
 	};
 }

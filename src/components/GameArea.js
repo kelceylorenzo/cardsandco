@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectCards, handleCardClick } from '../actions';
+import { selectCards } from '../actions';
 import Card from './Card';
 import cardBack from '../assets/images/balloon-elite.png';
 
@@ -11,19 +11,13 @@ class GameArea extends Component {
 
 	render() {
 		let cards = this.props.cardFronts.map((currentCardFront, index) => {
-			let flipped = false;
+			let show = false;
+
 			if (this.props.gameBoardCheck[index]) {
-				flipped = true;
+				show = true;
 			}
-			return (
-				<Card
-					key={index}
-					index={index}
-					flipped={flipped}
-					cardFront={currentCardFront}
-					cardBack={cardBack}
-				/>
-			);
+
+			return <Card key={index} index={index} cardFront={currentCardFront} cardBack={cardBack} show={show} />;
 		});
 		return (
 			<div className="game-area">
@@ -41,4 +35,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps, { selectCards, handleCardClick })(GameArea);
+export default connect(mapStateToProps, { selectCards })(GameArea);

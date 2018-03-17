@@ -5,14 +5,8 @@ const DEFAULT_STATE = {
 	numberOfMatches: 0,
 	cardFronts: [],
 	gameBoardCheck: [],
-	firstCardClicked: {
-		image: null,
-		index: null
-	},
-	secondCardClicked: {
-		image: null,
-		index: null
-	},
+	firstCardClicked: null,
+	secondCardClicked: null,
 	attempts: 0
 };
 
@@ -45,23 +39,66 @@ export default function(state = DEFAULT_STATE, action) {
 			}
 
 			return {
+				...state,
 				cardFronts: randomSelectionArray,
 				numberOfCards: randomSelectionArray.length,
 				gameBoardCheck: new Array(randomSelectionArray.length).fill(false)
 			};
 		case types.CHECK_CARD:
-			console.log('action.payload: ', action.payload);
+			let { cardIndex, cardFront } = action.payload;
+			let { firstCardClicked, secondCardClicked, gameBoardCheck, attempts, numberOfMatches } = state;
+
 			//check corresponding index in gameBoardCheck
-			//if false: turn to true
 			//if true: return state
+			if (gameBoardCheck[cardIndex]) {
+				return state;
+			}
+
+			if (firstCardClicked === action.payload) {
+				return state;
+			}
+
 			//check if firstCardClicked is null
-			//if null: set to action.payload.cardFront; return state
+			//if null: change corresponding index in gameBoardCheck to true set to action.payload.cardFront; return state
+			if (!firstCardClicked) {
+				firstCardClicked = action.payload;
+				gameBoardCheck[cardIndex] = true;
+				return {
+					...state,
+					firstCardClicked: action.payload,
+					gameBoardCheck
+				};
+			}
+
+			console.log('second card set: ', action.payload);
 			//if not null: set to secondCardClicked
+			secondCardClicked = action.payload;
+			gameBoardCheck[cardIndex] = true;
+
 			//check if firstCardClicked and secondCardClicked are the same
 			//if true : increment numberOfMatches
-			//if false: change corresponding indexes in gameBoardCheck to false, increment attempts
+			if (firstCardClicked.cardFront === secondCardClicked.cardFront) {
+				return {
+					...state,
+					firstCardClicked: null,
+					secondCardClicked: null,
+					gameBoardCheck,
+					attempts: attempts + 1,
+					numberOfMatches: numberOfMatches + 1
+				};
+			}
 
-			return state;
+			//if false: change corresponding indexes in gameBoardCheck to false, increment attempts
+			gameBoardCheck[firstCardClicked.cardIndex] = false;
+			gameBoardCheck[cardIndex] = false;
+			return {
+				...state,
+				firstCardClicked: null,
+				secondCardClicked: null,
+				gameBoardCheck,
+				attempts: attempts + 1
+			};
+
 		default:
 			return state;
 	}

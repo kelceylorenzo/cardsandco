@@ -3,8 +3,13 @@ import { connect } from 'react-redux';
 import { checkCard } from '../actions';
 
 class Card extends Component {
-	cardClicked(event) {
-		this.props.checkCard(event.target, this.props.cardFront, this.props.index);
+	cardClicked() {
+		// event
+		this.props.checkCard(
+			// event.target,
+			this.props.cardFront,
+			this.props.index
+		);
 	}
 
 	render() {
@@ -12,7 +17,7 @@ class Card extends Component {
 			display: ''
 		};
 
-		if (this.props.flipped) {
+		if (this.props.gameBoardCheck[this.props.index]) {
 			style.display = 'none';
 		}
 
@@ -29,4 +34,12 @@ class Card extends Component {
 	}
 }
 
-export default connect(null, { checkCard })(Card);
+function mapStateToProps(state) {
+	return {
+		gameBoardCheck: state.game.gameBoardCheck,
+		firstCardClicked: state.game.firstCardClicked,
+		secondCardClicked: state.game.secondCardClicked
+	};
+}
+
+export default connect(mapStateToProps, { checkCard })(Card);
