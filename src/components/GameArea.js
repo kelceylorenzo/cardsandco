@@ -11,7 +11,13 @@ class GameArea extends Component {
 
 	render() {
 		let cards = this.props.cardFronts.map((currentCardFront, index) => {
-			return <Card key={index} cardFront={currentCardFront} cardBack={cardBack} />;
+			let show = false;
+
+			if (this.props.gameBoardCheck[index]) {
+				show = true;
+			}
+
+			return <Card key={index} index={index} cardFront={currentCardFront} cardBack={cardBack} show={show} />;
 		});
 		return (
 			<div className="game-area">
@@ -24,7 +30,8 @@ class GameArea extends Component {
 
 function mapStateToProps(state) {
 	return {
-		cardFronts: state.game.cardFronts
+		cardFronts: state.game.cardFronts,
+		gameBoardCheck: state.game.gameBoardCheck
 	};
 }
 
