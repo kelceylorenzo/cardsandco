@@ -1,30 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { selectCards } from '../actions';
+import { createCards } from '../actions';
 import Card from './Card';
 import cardBack from '../assets/images/balloon-elite.png';
 
 class GameArea extends Component {
 	componentDidMount() {
-		this.props.selectCards();
+		this.props.createCards();
 	}
 
 	render() {
 		let cards = this.props.cardFronts.map((currentCardFront, index) => {
-			let show = false;
-
-			if (this.props.gameBoardCheck[index]) {
-				show = true;
-			}
-
-			return <Card key={index} index={index} cardFront={currentCardFront} cardBack={cardBack} show={show} />;
+			return <Card key={index} index={index} cardFront={currentCardFront} cardBack={cardBack} />;
 		});
-		return (
-			<div className="game-area">
-				<div>this will be the game area</div>
-				{cards}
-			</div>
-		);
+		return <div className="game-area">{cards}</div>;
 	}
 }
 
@@ -35,4 +24,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps, { selectCards })(GameArea);
+export default connect(mapStateToProps, { createCards })(GameArea);
