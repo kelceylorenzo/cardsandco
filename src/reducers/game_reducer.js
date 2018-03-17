@@ -75,8 +75,10 @@ export default function(state = DEFAULT_STATE, action) {
 			};
 
 		case types.CHECK_CARD:
-			console.log('check card called');
-			console.log('check card state: ', state);
+			//check to ensure that cards have been clicked
+			if (state.firstCardClicked === null) {
+				return state;
+			}
 			//check if firstCardClicked and secondCardClicked are the same
 			//if true : increment numberOfMatches
 			if (state.firstCardClicked.cardFront === state.secondCardClicked.cardFront) {

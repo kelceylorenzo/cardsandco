@@ -4,9 +4,8 @@ import { flipCard, checkCard } from '../actions';
 
 class Card extends Component {
 	componentWillReceiveProps(nextProps) {
-		console.log('next props: ', nextProps);
-		if (nextProps.secondCardClicked === null) {
-			setTimeout(this.props.checkCard, 2000);
+		if (nextProps.secondCardClicked !== null) {
+			setTimeout(this.props.checkCard, 1500);
 		}
 	}
 
