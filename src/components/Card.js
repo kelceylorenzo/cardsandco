@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { checkCard } from '../actions';
+import { flipCard, checkCard } from '../actions';
 
 class Card extends Component {
+	componentWillReceiveProps(nextProps) {
+		console.log('next props: ', nextProps);
+		if (nextProps.secondCardClicked === null) {
+			setTimeout(this.props.checkCard, 2000);
+		}
+	}
+
 	cardClicked() {
-		// event
-		this.props.checkCard(
-			// event.target,
-			this.props.cardFront,
-			this.props.index
-		);
+		this.props.flipCard(this.props.cardFront, this.props.index);
 	}
 
 	render() {
@@ -42,4 +44,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps, { checkCard })(Card);
+export default connect(mapStateToProps, { flipCard, checkCard })(Card);

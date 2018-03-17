@@ -12,7 +12,7 @@ const DEFAULT_STATE = {
 
 export default function(state = DEFAULT_STATE, action) {
 	switch (action.type) {
-		case types.SELECT_CARDS:
+		case types.CREATE_CARDS:
 			let holderArray = [];
 			let randomSelectionArray = [];
 
@@ -44,17 +44,12 @@ export default function(state = DEFAULT_STATE, action) {
 				numberOfCards: randomSelectionArray.length,
 				gameBoardCheck: new Array(randomSelectionArray.length).fill(false)
 			};
-		case types.CHECK_CARD:
-			let { cardIndex, cardFront } = action.payload;
+		case types.FLIP_CARD:
 			let { firstCardClicked, secondCardClicked, gameBoardCheck, attempts, numberOfMatches } = state;
-
+			let { cardIndex, cardFront } = action.payload;
 			//check corresponding index in gameBoardCheck
 			//if true: return state
-			if (gameBoardCheck[cardIndex]) {
-				return state;
-			}
-
-			if (firstCardClicked === action.payload) {
+			if (gameBoardCheck[cardIndex] || firstCardClicked === action.payload || secondCardClicked !== null) {
 				return state;
 			}
 
@@ -70,32 +65,39 @@ export default function(state = DEFAULT_STATE, action) {
 				};
 			}
 
-			console.log('second card set: ', action.payload);
 			//if not null: set to secondCardClicked
-			secondCardClicked = action.payload;
 			gameBoardCheck[cardIndex] = true;
 
+			return {
+				...state,
+				secondCardClicked: action.payload,
+				gameBoardCheck
+			};
+
+		case types.CHECK_CARD:
+			console.log('check card called');
+			console.log('check card state: ', state);
 			//check if firstCardClicked and secondCardClicked are the same
 			//if true : increment numberOfMatches
-			if (firstCardClicked.cardFront === secondCardClicked.cardFront) {
+			if (state.firstCardClicked.cardFront === state.secondCardClicked.cardFront) {
 				return {
 					...state,
 					firstCardClicked: null,
 					secondCardClicked: null,
-					gameBoardCheck,
 					attempts: attempts + 1,
 					numberOfMatches: numberOfMatches + 1
 				};
 			}
 
 			//if false: change corresponding indexes in gameBoardCheck to false, increment attempts
-			gameBoardCheck[firstCardClicked.cardIndex] = false;
-			gameBoardCheck[cardIndex] = false;
+			let newGameBoardCheck = state.gameBoardCheck;
+			newGameBoardCheck[state.firstCardClicked.cardIndex] = false;
+			newGameBoardCheck[state.secondCardClicked.cardIndex] = false;
 			return {
 				...state,
 				firstCardClicked: null,
 				secondCardClicked: null,
-				gameBoardCheck,
+				gameBoardCheck: newGameBoardCheck,
 				attempts: attempts + 1
 			};
 

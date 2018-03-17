@@ -1,24 +1,25 @@
 import types from './types';
 import gameImages from '../components/gameImages';
 
-export function selectCards() {
+export function createCards() {
 	return {
-		type: types.SELECT_CARDS,
+		type: types.CREATE_CARDS,
 		payload: gameImages
 	};
 }
 
-export function checkCard(
-	// event,
-	cardFront,
-	cardIndex
-) {
+export function flipCard(cardFront, cardIndex) {
 	return {
-		type: types.CHECK_CARD,
+		type: types.FLIP_CARD,
 		payload: {
-			// event,
 			cardFront,
 			cardIndex
 		}
+	};
+}
+
+export function checkCard() {
+	return {
+		type: types.CHECK_CARD
 	};
 }

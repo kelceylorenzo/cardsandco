@@ -1,4 +1,5 @@
 export default {
-	SELECT_CARDS: 'select_cards',
-	CHECK_CARD: 'handle_card_click'
+	CREATE_CARDS: 'create_cards',
+	FLIP_CARD: 'flip_card',
+	CHECK_CARD: 'check_card'
 };
