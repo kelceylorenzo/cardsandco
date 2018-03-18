@@ -1,5 +1,7 @@
 export default {
 	CREATE_CARDS: 'create_cards',
-	FLIP_CARD: 'flip_card',
-	CHECK_CARD: 'check_card'
+	REVEAL_CARD: 'reveal_card',
+	REVERT_CARDS: 'revert_cards',
+	CHECK_PAIR: 'check_pair',
+	RESET_GAME: 'reset_game'
 };
