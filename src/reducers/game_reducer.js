@@ -1,4 +1,5 @@
 import types from '../actions/types';
+import createCards from '../data/createCards';
 
 const DEFAULT_STATE = {
 	numberOfCards: 0,
@@ -17,36 +18,11 @@ const DEFAULT_STATE = {
 export default function(state = DEFAULT_STATE, action) {
 	switch (action.type) {
 		case types.CREATE_CARDS:
-			let holderArray = [];
-			let randomSelectionArray = [];
-
-			//selecting nine random card fronts out of possible 10 options
-			for (let selector = 0; selector < 9; selector++) {
-				let randomIndex = Math.floor(Math.random() * action.payload.length);
-				holderArray.push(action.payload[randomIndex]);
-				action.payload.splice(randomIndex, 1);
-			}
-
-			//pushing two of each card into array
-			for (let index = 0; index < holderArray.length; index++) {
-				randomSelectionArray.push(holderArray[index]);
-				randomSelectionArray.push(holderArray[index]);
-			}
-
-			//shuffling cards
-			holderArray = randomSelectionArray;
-			randomSelectionArray = [];
-			while (holderArray.length > 0) {
-				var randomIndex = Math.floor(Math.random() * holderArray.length);
-				randomSelectionArray.push(holderArray[randomIndex]);
-				holderArray.splice(randomIndex, 1);
-			}
-
 			return {
 				...state,
-				cardFronts: randomSelectionArray,
-				numberOfCards: randomSelectionArray.length,
-				gameBoardCheck: new Array(randomSelectionArray.length).fill(false)
+				cardFronts: createCards(),
+				numberOfCards: 18,
+				gameBoardCheck: new Array(18).fill(false)
 			};
 		case types.REVEAL_CARD:
 			let { firstCardClicked, secondCardClicked, gameBoardCheck, canBeClicked } = state;
@@ -101,17 +77,12 @@ export default function(state = DEFAULT_STATE, action) {
 				//if player has not matched all the cards
 				return {
 					...state,
-					numberOfCards: 0,
-					numberOfMatches: 0,
-					cardFronts: [],
-					gameBoardCheck: [],
 					firstCardClicked: null,
 					secondCardClicked: null,
-					canBeClicked: true,
-					noMatch: false,
-					gamesPlayed: 0,
-					attempts: 0,
-					accuracy: '---'
+					attempts,
+					accuracy,
+					numberOfMatches,
+					canBeClicked: true
 				};
 			}
 
@@ -144,15 +115,19 @@ export default function(state = DEFAULT_STATE, action) {
 			};
 
 		case types.RESET_GAME:
-			console.log('reset game reducer called');
+			let newGamesPlayed = state.gamesPlayed;
 			return {
-				...state,
+				numberOfCards: 18,
+				numberOfMatches: 0,
+				cardFronts: createCards(),
+				gameBoardCheck: new Array(18).fill(false),
 				firstCardClicked: null,
 				secondCardClicked: null,
-				attempts,
-				numberOfMatches,
-				accuracy,
-				gamesPlayed: gamesPlayed + 1
+				canBeClicked: true,
+				noMatch: false,
+				gamesPlayed: newGamesPlayed + 1,
+				attempts: 0,
+				accuracy: '---'
 			};
 
 		default:

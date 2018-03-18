@@ -1,10 +1,8 @@
 import types from './types';
-import gameImages from '../components/gameImages';
 
 export function createCards() {
 	return {
-		type: types.CREATE_CARDS,
-		payload: gameImages
+		type: types.CREATE_CARDS
 	};
 }
 
