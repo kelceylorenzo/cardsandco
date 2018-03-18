@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { flipCard, checkCard } from '../actions';
+import { revealCard, revertCards } from '../actions';
 
 class Card extends Component {
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.secondCardClicked !== null) {
-			setTimeout(this.props.checkCard, 1500);
+		if (nextProps.noMatch) {
+			setTimeout(this.props.revertCards, 1000);
 		}
 	}
 
 	cardClicked() {
-		this.props.flipCard(this.props.cardFront, this.props.index);
+		this.props.revealCard(this.props.cardFront, this.props.index);
 	}
 
 	render() {
@@ -39,8 +39,9 @@ function mapStateToProps(state) {
 	return {
 		gameBoardCheck: state.game.gameBoardCheck,
 		firstCardClicked: state.game.firstCardClicked,
-		secondCardClicked: state.game.secondCardClicked
+		secondCardClicked: state.game.secondCardClicked,
+		noMatch: state.game.noMatch
 	};
 }
 
-export default connect(mapStateToProps, { flipCard, checkCard })(Card);
+export default connect(mapStateToProps, { revealCard, revertCards })(Card);

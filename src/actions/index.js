@@ -1,16 +1,14 @@
 import types from './types';
-import gameImages from '../components/gameImages';
 
 export function createCards() {
 	return {
-		type: types.CREATE_CARDS,
-		payload: gameImages
+		type: types.CREATE_CARDS
 	};
 }
 
-export function flipCard(cardFront, cardIndex) {
+export function revealCard(cardFront, cardIndex) {
 	return {
-		type: types.FLIP_CARD,
+		type: types.REVEAL_CARD,
 		payload: {
 			cardFront,
 			cardIndex
@@ -18,8 +16,20 @@ export function flipCard(cardFront, cardIndex) {
 	};
 }
 
-export function checkCard() {
+export function revertCards() {
 	return {
-		type: types.CHECK_CARD
+		type: types.REVERT_CARDS
+	};
+}
+
+export function checkPair() {
+	return {
+		type: types.CHECK_PAIR
+	};
+}
+
+export function resetGame() {
+	return {
+		type: types.RESET_GAME
 	};
 }
