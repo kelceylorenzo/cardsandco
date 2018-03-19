@@ -1,24 +1,48 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { selectCardPack } from '../actions';
 import anchor from '../assets/images/cardpack-anchor.png';
 import balloon from '../assets/images/cardpack-balloon.png';
 import butterfly from '../assets/images/cardpack-butterfly.png';
 import shield from '../assets/images/cardpack-shield.png';
 
 class CardSelection extends Component {
+	handleCardPackSelection(selection) {
+		console.log('card pack selected ', selection);
+		this.props.selectCardPack(selection);
+		this.props.history.push('/game');
+	}
+
 	render() {
 		return (
 			<div className="page-container cardpack-selection-page">
 				<div className="cardpack-selection-title">select your card pack</div>
 
 				<div className="cardpack-selectors">
-					<img className="cardpack anchor" src={anchor} />
-					<img className="cardpack balloon" src={balloon} />
-					<img className="cardpack butterfly" src={butterfly} />
-					<img className="cardpack shield" src={shield} />
+					<img
+						className="cardpack"
+						src={anchor}
+						onClick={() => this.handleCardPackSelection('anchor')}
+					/>
+					<img
+						className="cardpack"
+						src={balloon}
+						onClick={() => this.handleCardPackSelection('balloon')}
+					/>
+					<img
+						className="cardpack"
+						src={butterfly}
+						onClick={() => this.handleCardPackSelection('butterfly')}
+					/>
+					<img
+						className="cardpack"
+						src={shield}
+						onClick={() => this.handleCardPackSelection('shield')}
+					/>
 				</div>
 			</div>
 		);
 	}
 }
 
-export default CardSelection;
+export default connect(null, { selectCardPack })(CardSelection);

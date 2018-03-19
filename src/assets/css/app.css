@@ -76,6 +76,10 @@
 	color: whitesmoke;
 }
 
+.start-button:focus {
+	outline: none;
+}
+
 /* Card Pack Selection Page */
 
 .cardpack-selection-page {
