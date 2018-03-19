@@ -6,34 +6,72 @@
 * {
 	box-sizing: border-box;
 	margin: 0 auto 0 auto;
+	background-size: cover;
+	background-repeat: no-repeat;
 	font-family: 'Droid Sans', sans-serif;
 }
 
-body {
+.page-container {
+	margin: 0 auto 0 auto;
 	background-size: cover;
 	background-repeat: no-repeat;
-}
-
-.page-container {
 	width: 100vw;
 	height: 100vh;
-	margin: 0 auto 0 auto;
 }
 
 /*Intro Page*/
+
+.intro-page {
+	display: flex;
+	align-content: center;
+}
+
 .intro-container {
-	background-color: #4b4b4b;
-	width: 100vw;
-	height: 100vh;
-	z-index: 100;
 	text-align: center;
-	position: absolute;
 	animation-delay: 0.7s;
 	animation-duration: 0.5s;
 	display: flex;
 	align-content: center;
-	flex-wrap: wrap;
-	justify-content: space-between;
+	flex-direction: column;
+	justify-content: space-around;
+	margin: auto;
+}
+
+.intro-title {
+	color: whitesmoke;
+	text-shadow: 3px 3px 7px grey;
+	font-size: 10vmax;
+	font-family: 'Abril Fatface', cursive;
+}
+
+.intro-subtitle {
+	margin: 20px 0;
+	font-size: 1.9vmax;
+	font-weight: 600;
+	color: white;
+}
+
+.start-buttons {
+	width: 80%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.start-button {
+	width: 40%;
+	background-color: whitesmoke;
+	color: lightcoral;
+	border: 2px solid lightcoral;
+	font-size: 1.5vmax;
+	cursor: pointer;
+	padding: 20px;
+	margin: 0 15px;
+}
+
+.start-buttons button:hover {
+	background-color: lightcoral;
+	border: 2px solid lightcoral;
+	color: whitesmoke;
 }
 
 .title {
