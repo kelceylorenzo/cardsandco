@@ -5,6 +5,7 @@ const DEFAULT_STATE = {
 	numberOfCards: 0,
 	numberOfMatches: 0,
 	cardFronts: [],
+	cardPack: '',
 	gameBoardCheck: [],
 	firstCardClicked: null,
 	secondCardClicked: null,
@@ -17,6 +18,12 @@ const DEFAULT_STATE = {
 
 export default function(state = DEFAULT_STATE, action) {
 	switch (action.type) {
+		case types.SELECT_CARDPACK:
+			console.log(action.payload);
+			return {
+				...state,
+				cardPack: action.payload
+			};
 		case types.CREATE_CARDS:
 			return {
 				...state,

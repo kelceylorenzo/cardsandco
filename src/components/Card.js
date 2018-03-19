@@ -25,7 +25,7 @@ class Card extends Component {
 		return (
 			<div className="card" onClick={this.cardClicked.bind(this)}>
 				<div className="back" style={style}>
-					<img src={this.props.cardBack} />
+					<img src={this.props.cardPack} />
 				</div>
 				<div className="front">
 					<img src={this.props.cardFront} />

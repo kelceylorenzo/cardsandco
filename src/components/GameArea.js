@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createCards, checkPair } from '../actions';
 import Card from './Card';
-import cardBack from '../assets/images/balloon-elite.png';
+import balloon from '../assets/images/balloon-elite.png';
+import butterfly from '../assets/images/butterfly-elite.png';
+import shield from '../assets/images/shield-elite.png';
+import anchor from '../assets/images/anchor-elite.png';
 
 class GameArea extends Component {
 	componentDidMount() {
@@ -16,8 +19,24 @@ class GameArea extends Component {
 	}
 
 	render() {
+		let cardPack = balloon;
+
+		switch (this.props.cardPack) {
+			case 'butterfly':
+				cardPack = butterfly;
+				break;
+			case 'shield':
+				cardPack = shield;
+				break;
+			case 'anchor':
+				cardPack = anchor;
+				break;
+			default:
+				break;
+		}
+
 		let cards = this.props.cardFronts.map((currentCardFront, index) => {
-			return <Card key={index} index={index} cardFront={currentCardFront} cardBack={cardBack} />;
+			return <Card key={index} index={index} cardFront={currentCardFront} cardPack={cardPack} />;
 		});
 		return <div className="game-area">{cards}</div>;
 	}
@@ -28,7 +47,8 @@ function mapStateToProps(state) {
 		cardFronts: state.game.cardFronts,
 		gameBoardCheck: state.game.gameBoardCheck,
 		firstCardClicked: state.game.firstCardClicked,
-		secondCardClicked: state.game.secondCardClicked
+		secondCardClicked: state.game.secondCardClicked,
+		cardPack: state.game.cardPack
 	};
 }
 

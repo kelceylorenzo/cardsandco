@@ -8,7 +8,7 @@ export default (props) => {
 				<div className="intro-title">Cards&Co.</div>
 				<div className="intro-subtitle">A MEMORY MATCH GAME</div>
 				<div className="start-buttons">
-					<Link to="/start-game" className="start-button">
+					<Link to="/select-cardpack" className="start-button">
 						PLAY
 					</Link>
 					<Link to="/about" className="start-button">
