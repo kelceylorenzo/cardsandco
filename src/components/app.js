@@ -1,16 +1,26 @@
 import React from 'react';
-import GameArea from './GameArea';
-import StatsContainer from './StatsContainer';
+import { Route, Redirect, Switch } from 'react-router';
+import IntroPage from './Intro';
+import About from './About';
+import CardSelection from './CardSelection';
+import backgroundImage from '../assets/images/Cappadocia-Desktop.png';
 import '../assets/css/app.css';
 
-const App = () => (
-	<div>
-		<div className="header">
-			<h2 className="main-title">React Redux Memory Match</h2>
+export default () => {
+	const pageStyle = {
+		backgroundImage: `url('${backgroundImage}')`,
+		backgroundSize: 'cover',
+		backgroundRepeat: 'no-repeat',
+		backgroundPosition: 'center'
+	};
+	return (
+		<div style={pageStyle}>
+			<Switch>
+				<Route exact path="/" component={IntroPage} />
+				<Route path="/about" component={About} />
+				<Route path="/start-game" component={CardSelection} />
+				<Redirect to="/" />
+			</Switch>
 		</div>
-		<StatsContainer />
-		<GameArea />
-	</div>
-);
-
-export default App;
+	);
+};

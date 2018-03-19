@@ -5,7 +5,7 @@ import { revealCard, revertCards } from '../actions';
 class Card extends Component {
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.noMatch) {
-			setTimeout(this.props.revertCards, 1000);
+			this.resetCards = setTimeout(this.props.revertCards, 1000);
 		}
 	}
 
