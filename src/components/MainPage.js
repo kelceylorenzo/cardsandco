@@ -34,7 +34,7 @@ class MainPage extends Component {
 		switch (modal) {
 			case 'settings':
 				this.setState({
-					gameAreaState: <Settings closeModal={this.closeModal} />
+					gameAreaState: <Settings closeModal={this.closeModal} redirectPage={this.redirectPage} />
 				});
 				break;
 			case 'rules':
@@ -56,6 +56,20 @@ class MainPage extends Component {
 		this.setState({
 			gameAreaState: null
 		});
+	};
+
+	redirectPage = (page) => {
+		switch (page) {
+			case 'select-cardpack':
+				this.props.history.push('/select-cardpack');
+				break;
+
+			case 'home':
+				this.props.history.push('/');
+				break;
+			default:
+				return;
+		}
 	};
 
 	render() {

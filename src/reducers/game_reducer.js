@@ -21,7 +21,12 @@ export default function(state = DEFAULT_STATE, action) {
 		case types.SELECT_CARDPACK:
 			return {
 				...state,
-				cardPack: action.payload
+				cardPack: action.payload,
+				attempts: 0,
+				accuracy: '---',
+				firstCardClicked: null,
+				secondCardClicked: null,
+				canBeClicked: true
 			};
 		case types.CREATE_CARDS:
 			return {

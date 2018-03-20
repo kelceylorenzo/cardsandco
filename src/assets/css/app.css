@@ -63,11 +63,12 @@
 	background-color: whitesmoke;
 	color: lightcoral;
 	border: 4px solid lightcoral;
-	font-size: 1.5vmax;
+	font-size: 1.1vmax;
 	cursor: pointer;
-	padding: 20px;
+	padding: 15px;
 	margin: 0 15px;
 	text-decoration: none;
+	text-align: center;
 }
 
 .start-button:hover {
@@ -237,6 +238,47 @@
 	background-color: rgba(0, 0, 0, 0.7);
 }
 
+.modal-buttons-container {
+	width: 50%;
+	display: flex;
+	justify-content: space-around;
+	margin-top: 30px;
+}
+
+.modal-button {
+	width: 40%;
+	background-color: whitesmoke;
+	color: lightcoral;
+	border: 4px solid lightcoral;
+	font-size: 1.1vmax;
+	cursor: pointer;
+	padding: 20px;
+	margin: 0 15px;
+	text-decoration: none;
+	text-align: center;
+}
+
+.modal-button:hover {
+	background-color: lightcoral;
+	border: 4px solid whitesmoke;
+	color: whitesmoke;
+}
+
+.modal-title {
+	font-family: 'Abril Fatface', cursive;
+	color: whitesmoke;
+	text-align: center;
+	font-size: 5vmax;
+	width: 100%;
+}
+
+.modal-subtitle {
+	color: lightgrey;
+	margin: 10px 0;
+	text-align: center;
+	font-size: 1.2vmax;
+}
+
 /*Win Modal*/
 
 .win-modal-text {
@@ -358,53 +400,14 @@
 }
 
 /*Settings Modal*/
-.settings-modal {
-	position: absolute;
-	display: none;
-	z-index: 70;
-}
 
 .settings-container {
 	display: flex;
 	justify-content: center;
-	width: 100vw;
-	height: 100vh;
-	background-color: rgba(0, 0, 0, 0.7);
-}
-
-.settings-content-container {
-	background-color: whitesmoke;
-	min-width: 40vw;
-	min-height: 25vh;
-	padding: 2%;
-	position: relative;
-	display: flex;
-	margin: auto;
-	border-radius: 3%;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	align-content: space-between;
-}
-
-.settings-title {
-	font-family: 'Abril Fatface', cursive;
-	text-align: center;
-	font-size: 3vmax;
 	width: 100%;
-}
-
-.settings-button-style {
-	font-family: 'Droid Sans', sans-serif;
-	background-color: transparent;
-	color: lightcoral;
-	border: 2px solid lightcoral;
-	min-width: 15vmax;
-	font-size: 1vmax;
-	cursor: pointer;
-	padding: 2%;
-	text-decoration: none;
-	margin: auto;
-	text-align: center;
+	height: 100%;
+	align-items: center;
+	flex-direction: column;
 }
 
 .settings-button-style:hover {
