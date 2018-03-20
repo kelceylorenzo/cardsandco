@@ -13,8 +13,7 @@ const DEFAULT_STATE = {
 	noMatch: false,
 	gamesPlayed: 0,
 	attempts: 0,
-	accuracy: '---',
-	win: false
+	accuracy: '---'
 };
 
 export default function(state = DEFAULT_STATE, action) {
@@ -78,8 +77,7 @@ export default function(state = DEFAULT_STATE, action) {
 						attempts,
 						numberOfMatches,
 						accuracy,
-						gamesPlayed: gamesPlayed + 1,
-						win: true
+						gamesPlayed: gamesPlayed + 1
 					};
 				}
 				//if player has not matched all the cards
@@ -137,8 +135,7 @@ export default function(state = DEFAULT_STATE, action) {
 					canBeClicked: true,
 					noMatch: false,
 					attempts: 0,
-					accuracy: '---',
-					win: false
+					accuracy: '---'
 				};
 			}
 
@@ -154,13 +151,7 @@ export default function(state = DEFAULT_STATE, action) {
 				noMatch: false,
 				gamesPlayed: newGamesPlayed + 1,
 				attempts: 0,
-				accuracy: '---',
-				win: false
-			};
-		case types.CLOSE_MODAL:
-			return {
-				...state,
-				win: false
+				accuracy: '---'
 			};
 
 		default:
