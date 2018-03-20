@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { resetGame, createCards } from '../actions';
+import { resetGame } from '../actions';
 
 class StatsContainer extends Component {
 	handleNewGameClick() {
@@ -43,4 +43,4 @@ function mapStateToProps(state) {
 	};
 }
 
-export default connect(mapStateToProps, { resetGame, createCards })(StatsContainer);
+export default connect(mapStateToProps, { resetGame })(StatsContainer);

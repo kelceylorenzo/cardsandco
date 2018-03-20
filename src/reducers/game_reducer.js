@@ -13,13 +13,13 @@ const DEFAULT_STATE = {
 	noMatch: false,
 	gamesPlayed: 0,
 	attempts: 0,
-	accuracy: '---'
+	accuracy: '---',
+	win: false
 };
 
 export default function(state = DEFAULT_STATE, action) {
 	switch (action.type) {
 		case types.SELECT_CARDPACK:
-			console.log(action.payload);
 			return {
 				...state,
 				cardPack: action.payload
@@ -78,7 +78,8 @@ export default function(state = DEFAULT_STATE, action) {
 						attempts,
 						numberOfMatches,
 						accuracy,
-						gamesPlayed: gamesPlayed + 1
+						gamesPlayed: gamesPlayed + 1,
+						win: true
 					};
 				}
 				//if player has not matched all the cards
@@ -136,11 +137,13 @@ export default function(state = DEFAULT_STATE, action) {
 					canBeClicked: true,
 					noMatch: false,
 					attempts: 0,
-					accuracy: '---'
+					accuracy: '---',
+					win: false
 				};
 			}
 
 			return {
+				...state,
 				numberOfCards: 18,
 				numberOfMatches: 0,
 				cardFronts: createCards(),
@@ -151,7 +154,13 @@ export default function(state = DEFAULT_STATE, action) {
 				noMatch: false,
 				gamesPlayed: newGamesPlayed + 1,
 				attempts: 0,
-				accuracy: '---'
+				accuracy: '---',
+				win: false
+			};
+		case types.CLOSE_MODAL:
+			return {
+				...state,
+				win: false
 			};
 
 		default:

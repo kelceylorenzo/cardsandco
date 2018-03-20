@@ -5,7 +5,7 @@
 
 * {
 	box-sizing: border-box;
-	margin: 0 auto 0 auto;
+	margin: 0 auto;
 	background-size: cover;
 	background-repeat: no-repeat;
 	font-family: 'Droid Sans', sans-serif;
@@ -81,7 +81,6 @@
 }
 
 /* Card Pack Selection Page */
-
 .cardpack-selection-page {
 	background-color: rgba(0, 0, 0, 0.5);
 	display: flex;
@@ -117,17 +116,20 @@
 	cursor: pointer;
 }
 
+/* Main Game Area */
+.game-area-container {
+	width: 100%;
+	height: 85%;
+	display: flex;
+	padding: 15px 0;
+}
+
 /*Header*/
 .header {
 	width: 100%;
-	min-height: 13vmin;
+	min-height: 15%;
 	background-color: rgba(255, 255, 255, 0.7);
 	text-align: center;
-	display: inline-block;
-	position: relative;
-	padding: 0 1vh 1vh 1vh;
-	z-index: 50;
-	margin: 0;
 }
 
 .main-title {
@@ -155,13 +157,10 @@
 
 /*Stats Sidebar*/
 .stats-container {
-	width: 13vw;
-	min-height: 40vmin;
+	width: 13%;
+	min-height: 60%;
 	text-align: center;
 	background-color: rgba(255, 255, 255, 0.7);
-	margin: 1vh 5vw 0 3vw;
-	display: inline-block;
-	position: relative;
 }
 
 .stats-title {
@@ -198,14 +197,11 @@
 
 /*Main Game Area*/
 .game-area {
-	min-height: 60vmin;
-	width: 75vw;
+	height: 100%;
+	width: 75%;
 	text-align: center;
-	display: inline-block;
-	position: absolute;
 	background-color: rgba(255, 255, 255, 0.7);
 	padding: 1% 0;
-	margin: 1vh 3vw 0 0;
 }
 
 .card {
@@ -227,74 +223,62 @@
 
 /*Win Modal*/
 .win-screen-container {
-	width: 100vw;
-	min-height: 15vh;
-	margin-top: 15vh;
-	padding: 2%;
-	text-align: center;
-	display: inline-block;
-	z-index: 10;
-}
-
-.winner-alert {
-	background-color: rgba(0, 0, 0, 0.7);
-	width: 100vw;
-	height: 100vh;
-	z-index: 10;
+	width: 100%;
+	height: 85%;
+	z-index: 1;
 	position: absolute;
-	animation-duration: 0.5s;
-	display: none;
+	top: 15%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-color: rgba(0, 0, 0, 0.7);
 }
 
-.modal-text {
+.win-modal-text {
 	font-family: 'Abril Fatface', cursive;
-	font-size: 9vmax;
+	font-size: 10vmax;
 	color: whitesmoke;
 	vertical-align: middle;
 	text-shadow: 3px 3px 7px grey;
 	animation-delay: 0.4s;
 	animation-duration: 0.5s;
-	z-index: 10;
 }
 
-.modal-button {
+.win-modal-button-container {
+	width: 40%;
+	display: flex;
+}
+
+.win-modal-button {
+	width: 25%;
 	background-color: transparent;
 	color: whitesmoke;
-	min-height: 6vmin;
-	min-width: 8vmin;
 	font-size: 1vmax;
 	cursor: pointer;
-	padding: 1%;
-	animation-delay: 1.5s;
+	padding: 3%;
 	border-color: rgb(216, 216, 216);
-	z-index: 10;
+	margin: auto;
 }
 
-.modal-button:hover {
+.win-modal-button:hover {
 	background-color: whitesmoke;
 	border-color: rgb(216, 216, 216);
 	color: rgba(0, 0, 0, 0.7);
 }
 
 .close-button {
-	background-color: white;
-	color: rgba(0, 0, 0, 0.7);
-	min-height: 1vmin;
-	min-width: 1vmin;
-	font-size: 1vmax;
+	color: whitesmoke;
+	font-size: 1.6vmax;
 	cursor: pointer;
-	padding: 10px 15px;
-	animation-delay: 1.5s;
 	position: absolute;
-	top: 2vw;
-	right: 2vw;
-	border-radius: 80%;
-	z-index: 10;
+	top: 20px;
+	right: 20px;
 }
 
 .close-button:hover {
 	background-color: transparent;
-	color: whitesmoke;
+	color: lightcoral;
 }
 
 /*About Page*/
