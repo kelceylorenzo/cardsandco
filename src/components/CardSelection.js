@@ -8,8 +8,11 @@ import shield from '../assets/images/cardpack-shield.png';
 
 class CardSelection extends Component {
 	handleCardPackSelection(selection) {
-		console.log('card pack selected ', selection);
 		this.props.selectCardPack(selection);
+		setTimeout(this.redirectToGamePage.bind(this), 1000);
+	}
+
+	redirectToGamePage() {
 		this.props.history.push('/game');
 	}
 

@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createCards, checkPair } from '../actions';
 import Card from './Card';
-import balloon from '../assets/images/balloon-elite.png';
-import butterfly from '../assets/images/butterfly-elite.png';
-import shield from '../assets/images/shield-elite.png';
-import anchor from '../assets/images/anchor-elite.png';
+import balloon from '../assets/images/balloon-normal.png';
+import butterfly from '../assets/images/butterfly-normal.png';
+import shield from '../assets/images/shield-normal.png';
+import anchor from '../assets/images/anchor-normal.png';
 
 class GameArea extends Component {
 	componentDidMount() {

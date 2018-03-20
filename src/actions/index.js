@@ -40,3 +40,9 @@ export function resetGame() {
 		type: types.RESET_GAME
 	};
 }
+
+export function closeModal() {
+	return {
+		type: types.CLOSE_MODAL
+	};
+}
