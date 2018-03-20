@@ -4,19 +4,59 @@ import Header from './Header';
 import GameArea from './GameArea';
 import StatsContainer from './StatsContainer';
 import WinModal from './WinModal';
+import Settings from './Settings';
+import Rules from './Rules';
+import About from './About';
 import backgroundImage from '../assets/images/Cappadocia-Desktop.png';
 import '../assets/css/app.css';
 
 class MainPage extends Component {
-	gameState = null;
+	constructor(props) {
+		super(props);
+		this.state = {
+			gameAreaState: null
+		};
+	}
 
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.win) {
-			this.gameState = <WinModal />;
+		if (nextProps.numberOfMatches === nextProps.numberOfCards / 2 && nextProps.numberOfCards !== 0) {
+			this.setState({
+				gameAreaState: <WinModal closeModal={this.closeModal} />
+			});
 		} else {
-			this.gameState = null;
+			this.setState({
+				gameAreaState: null
+			});
 		}
 	}
+
+	openModal = (modal) => {
+		switch (modal) {
+			case 'settings':
+				this.setState({
+					gameAreaState: <Settings closeModal={this.closeModal} />
+				});
+				break;
+			case 'rules':
+				this.setState({
+					gameAreaState: <Rules closeModal={this.closeModal} />
+				});
+				break;
+			case 'about':
+				this.setState({
+					gameAreaState: <About closeModal={this.closeModal} />
+				});
+				break;
+			default:
+				return;
+		}
+	};
+
+	closeModal = () => {
+		this.setState({
+			gameAreaState: null
+		});
+	};
 
 	render() {
 		const pageStyle = {
@@ -28,9 +68,9 @@ class MainPage extends Component {
 
 		return (
 			<div className="page-container" style={pageStyle}>
-				<Header />
+				<Header openModal={this.openModal} />
 				<div className="game-area-container">
-					{this.gameState}
+					{this.state.gameAreaState}
 					<StatsContainer />
 					<GameArea />
 				</div>
@@ -42,8 +82,7 @@ class MainPage extends Component {
 function mapStateToProps(state) {
 	return {
 		numberOfMatches: state.game.numberOfMatches,
-		numberOfCards: state.game.numberOfCards,
-		win: state.game.win
+		numberOfCards: state.game.numberOfCards
 	};
 }
 
