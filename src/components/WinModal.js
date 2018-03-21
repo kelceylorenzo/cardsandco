@@ -10,8 +10,8 @@ class WinModal extends Component {
 	render() {
 		return (
 			<div className="modal-container">
-				<div className="win-modal-text">You Won!</div>
-				<div className="win-modal-button-container">
+				<div className="win-modal-title">You Won!</div>
+				<div className="win-modal-buttons-container">
 					<button
 						to="/select-cardpack"
 						className="win-modal-button"

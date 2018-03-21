@@ -6,7 +6,6 @@ import StatsContainer from './StatsContainer';
 import WinModal from './WinModal';
 import Settings from './Settings';
 import Rules from './Rules';
-import About from './About';
 import backgroundImage from '../assets/images/Cappadocia-Desktop.png';
 import '../assets/css/app.css';
 
@@ -43,9 +42,7 @@ class MainPage extends Component {
 				});
 				break;
 			case 'about':
-				this.setState({
-					gameAreaState: <About closeModal={this.closeModal} />
-				});
+				this.props.history.push('/about');
 				break;
 			default:
 				return;
@@ -67,6 +64,10 @@ class MainPage extends Component {
 			case 'home':
 				this.props.history.push('/');
 				break;
+
+			case 'about':
+				this.props.history.push('/about');
+				break;
 			default:
 				return;
 		}
@@ -82,10 +83,10 @@ class MainPage extends Component {
 
 		return (
 			<div className="page-container" style={pageStyle}>
-				<Header openModal={this.openModal} />
+				<Header />
 				<div className="game-area-container">
 					{this.state.gameAreaState}
-					<StatsContainer />
+					<StatsContainer openModal={this.openModal} />
 					<GameArea />
 				</div>
 			</div>
