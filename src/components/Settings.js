@@ -15,6 +15,9 @@ export default (props) => {
 				<div className="modal-button" onClick={() => props.redirectPage('select-cardpack')}>
 					CHANGE CARD PACK
 				</div>
+				<div className="modal-button" onClick={() => props.redirectPage('about')}>
+					ABOUT
+				</div>
 				<div className="modal-button" onClick={() => props.redirectPage('home')}>
 					RETURN TO HOME
 				</div>

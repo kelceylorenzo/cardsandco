@@ -38,7 +38,11 @@ class GameArea extends Component {
 		let cards = this.props.cardFronts.map((currentCardFront, index) => {
 			return <Card key={index} index={index} cardFront={currentCardFront} cardPack={cardPack} />;
 		});
-		return <div className="game-area">{cards}</div>;
+		return (
+			<div className="game-area">
+				<div className="grid-container">{cards}</div>
+			</div>
+		);
 	}
 }
 

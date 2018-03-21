@@ -7,29 +7,38 @@ class StatsContainer extends Component {
 		this.props.resetGame();
 	}
 
+	handleOpenSettings() {
+		this.props.openModal('settings');
+	}
+
 	render() {
 		return (
 			<div className="stats-container">
 				<div className="stats-title">STATS</div>
+				<div>
+					<div className="games-played">
+						<div className="label">GAMES PLAYED:</div>
+						<div className="value">{this.props.gamesPlayed}</div>
+					</div>
 
-				<div className="games-played">
-					<div className="label">GAMES PLAYED:</div>
-					<div className="value">{this.props.gamesPlayed}</div>
+					<div className="attempts">
+						<div className="label">ATTEMPTS:</div>
+						<div className="value">{this.props.attempts}</div>
+					</div>
+
+					<div className="accuracy">
+						<div className="label">ACCURACY:</div>
+						<div className="value">{this.props.accuracy}</div>
+					</div>
 				</div>
-
-				<div className="attempts">
-					<div className="label">ATTEMPTS:</div>
-					<div className="value">{this.props.attempts}</div>
+				<div className="stats-button-container">
+					<button className="stats-button" onClick={this.handleNewGameClick.bind(this)}>
+						NEW GAME
+					</button>
+					<button className="stats-button" onClick={this.handleOpenSettings.bind(this)}>
+						SETTINGS
+					</button>
 				</div>
-
-				<div className="accuracy">
-					<div className="label">ACCURACY:</div>
-					<div className="value">{this.props.accuracy}</div>
-				</div>
-
-				<button className="reset" onClick={this.handleNewGameClick.bind(this)}>
-					NEW GAME
-				</button>
 			</div>
 		);
 	}
