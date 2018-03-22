@@ -8,7 +8,7 @@ class StatsContainer extends Component {
 	}
 
 	handleOpenSettings() {
-		this.props.openModal('settings');
+		this.props.openModal();
 	}
 
 	render() {
