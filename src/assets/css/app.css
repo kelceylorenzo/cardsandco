@@ -5,12 +5,12 @@
 
 * {
 	box-sizing: border-box;
-	margin: 0 auto;
+	margin: 0;
 	font-family: 'Droid Sans', sans-serif;
 }
 
 .page-container {
-	margin: 0 auto 0 auto;
+	margin: 0 auto;
 	background-size: cover;
 	background-repeat: no-repeat;
 	width: 100vw;
@@ -54,6 +54,7 @@
 	width: 80%;
 	display: flex;
 	justify-content: space-around;
+	margin: 0 auto;
 }
 
 .start-button {
@@ -191,7 +192,6 @@
 }
 
 /* Main Page */
-
 .main-page-container {
 	display: grid;
 	grid-template-columns: 1fr 2fr 2fr 1fr;
@@ -207,7 +207,7 @@
 /* Main Page Header*/
 .header {
 	width: 100%;
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.8);
 	display: flex;
 	align-items: center;
 	grid-area: header;
@@ -239,7 +239,7 @@
 .stats-container {
 	width: 100%;
 	text-align: center;
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.8);
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -262,6 +262,7 @@
 
 .stats-button-container {
 	width: 60%;
+	margin: 0 auto;
 }
 
 .stats-button {
@@ -288,7 +289,7 @@
 /*Main Game Area*/
 .game-area {
 	width: 100%;
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.8);
 	overflow: auto;
 	grid-area: game;
 }
@@ -300,24 +301,20 @@
 	grid-template-columns: repeat(6, 1fr);
 	grid-template-rows: repeat(3, 1fr);
 	justify-items: center;
-	align-items: center;
 	padding: 10px;
 }
 
 .card {
 	position: relative;
-}
-
-.front {
-	width: auto;
+	align-self: center;
 }
 
 .front > img {
-	height: 180px;
+	height: 25vh;
 }
 
 .back > img {
-	height: 180px;
+	height: 25vh;
 	position: absolute;
 	top: 0;
 	left: 0;
