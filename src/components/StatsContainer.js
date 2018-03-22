@@ -16,7 +16,7 @@ class StatsContainer extends Component {
 			<div className="stats-container">
 				<div className="stats-title">STATS</div>
 				<div className="games-played">
-					<div className="label">GAMES PLAYED:</div>
+					<div className="label">GAMES:</div>
 					<div className="value">{this.props.gamesPlayed}</div>
 				</div>
 
@@ -35,6 +35,13 @@ class StatsContainer extends Component {
 					</button>
 					<button className="stats-button" onClick={this.handleOpenSettings.bind(this)}>
 						SETTINGS
+					</button>
+
+					<button className="stats-button-mobile" onClick={this.handleNewGameClick.bind(this)}>
+						<i className="fas fa-redo-alt" />
+					</button>
+					<button className="stats-button-mobile" onClick={this.handleOpenSettings.bind(this)}>
+						<i className="fas fa-cog" />
 					</button>
 				</div>
 			</div>

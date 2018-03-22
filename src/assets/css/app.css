@@ -204,8 +204,9 @@
 		'blank game game game';
 }
 
-@media screen and (max-width: 1040px) {
+@media screen and (max-width: 1100px) {
 	.main-page-container {
+		grid-template-rows: 1fr 3fr 3fr 1fr;
 		grid-template-areas:
 			'game game game game'
 			'game game game game'
@@ -231,7 +232,7 @@
 	margin: auto;
 }
 
-@media screen and (max-width: 1040px) {
+@media screen and (max-width: 1100px) {
 	.header {
 		display: none;
 	}
@@ -241,9 +242,6 @@
 .stats-container {
 	text-align: center;
 	background-color: rgba(255, 255, 255, 0.8);
-	/* display: flex;
-	justify-content: center;
-	flex-direction: column; */
 	grid-area: sidebar;
 	display: grid;
 	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -282,12 +280,14 @@
 }
 
 .stats-button-container {
-	width: 60%;
+	width: 140px;
 	margin: 0 auto;
 	grid-area: buttons;
+	align-self: center;
 }
 
-.stats-button {
+.stats-button,
+.stats-button-mobile {
 	width: 100%;
 	background-color: whitesmoke;
 	color: lightcoral;
@@ -296,6 +296,11 @@
 	cursor: pointer;
 	padding: 10%;
 	margin: 5px auto;
+}
+
+.stats-button-mobile {
+	display: none;
+	width: 40%;
 }
 
 .stats-button:hover {
@@ -308,9 +313,70 @@
 	outline: none;
 }
 
-@media screen and (max-width: 1040px) {
+@media screen and (max-width: 1440px) {
+	.stats-title {
+		font-size: 3rem;
+	}
+
+	.label,
+	.value {
+		font-size: 1.2rem;
+		padding: 5px;
+	}
+}
+
+@media screen and (max-width: 1100px) {
 	.stats-container {
-		flex-direction: row;
+		grid-template-rows: unset;
+		grid-template-columns: repeat(5, 1fr);
+		grid-template-areas: 'title games attempts accuracy buttons';
+	}
+
+	.stats-title {
+		align-self: center;
+	}
+
+	.stats-button-container {
+		display: flex;
+	}
+
+	.stats-button {
+		display: none;
+	}
+
+	.stats-button-mobile {
+		display: block;
+	}
+
+	.label,
+	.value {
+		padding: 3px;
+	}
+
+	.label {
+		font-size: 1rem;
+	}
+}
+
+@media screen and (max-width: 745px) {
+	.stats-container {
+		grid-template-rows: unset;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-areas: 'games attempts accuracy buttons';
+	}
+
+	.stats-title {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.label {
+		font-size: 0.8rem;
+	}
+
+	.stats-button-container {
+		width: 100px;
 	}
 }
 
@@ -347,6 +413,16 @@
 	top: 0;
 	left: 0;
 	opacity: 0.2;
+}
+
+@media screen and (max-width: 1440px) {
+	.front > img {
+		height: 190px;
+	}
+
+	.back > img {
+		height: 190px;
+	}
 }
 
 /* Default modal CSS */
