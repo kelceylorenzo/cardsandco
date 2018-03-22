@@ -5,12 +5,12 @@
 
 * {
 	box-sizing: border-box;
-	margin: 0 auto;
+	margin: 0;
 	font-family: 'Droid Sans', sans-serif;
 }
 
 .page-container {
-	margin: 0 auto 0 auto;
+	margin: 0 auto;
 	background-size: cover;
 	background-repeat: no-repeat;
 	width: 100vw;
@@ -54,6 +54,7 @@
 	width: 80%;
 	display: flex;
 	justify-content: space-around;
+	margin: 0 auto;
 }
 
 .start-button {
@@ -190,83 +191,116 @@
 	}
 }
 
-/* Main Game Area */
-.game-area-container {
-	width: 100%;
-	height: 85%;
-	display: flex;
-	padding: 15px 0;
+/* Main Page */
+.main-page-container {
+	display: grid;
+	grid-template-columns: 1fr 2fr 2fr 1fr;
+	grid-template-rows: 1fr 2fr 2fr 1fr;
+	grid-gap: 20px;
+	grid-template-areas:
+		'header header header header'
+		'sidebar game game game'
+		'sidebar game game game'
+		'blank game game game';
 }
 
-/*Header*/
+@media screen and (max-width: 1100px) {
+	.main-page-container {
+		grid-template-rows: 1fr 3fr 3fr 1fr;
+		grid-template-areas:
+			'game game game game'
+			'game game game game'
+			'game game game game'
+			'sidebar sidebar sidebar sidebar';
+	}
+}
+
+/* Main Page Header*/
 .header {
 	width: 100%;
-	height: 15%;
-	background-color: rgba(255, 255, 255, 0.7);
+	background-color: rgba(255, 255, 255, 0.8);
 	display: flex;
 	align-items: center;
+	grid-area: header;
 }
 
 .main-title {
 	font-family: 'Abril Fatface', cursive;
-	font-size: 5vmax;
+	font-size: 6rem;
 	color: #585858;
 	text-shadow: 4px 3px 4px lightgrey;
 	margin: auto;
 }
 
-.link-bar {
-	font-family: 'Droid Sans', sans-serif;
-	font-size: 1.2vmax;
-	text-decoration: none;
-	margin: 1vw;
-	color: #585858;
-	display: inline;
-}
-
-.link-bar:hover {
-	color: lightcoral;
-	cursor: pointer;
+@media screen and (max-width: 1100px) {
+	.header {
+		display: none;
+	}
 }
 
 /*Stats Sidebar*/
 .stats-container {
-	width: 13%;
-	height: 60%;
 	text-align: center;
-	background-color: rgba(255, 255, 255, 0.7);
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
+	background-color: rgba(255, 255, 255, 0.8);
+	grid-area: sidebar;
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+	grid-template-areas: 't-gutter' 'title' 'games' 'attempts' 'accuracy' 'buttons' 'b-gutter';
 }
 
 .stats-title {
 	font-family: 'Abril Fatface', cursive;
-	font-size: 2.5vmax;
+	font-size: 3.5rem;
 	color: #585858;
 	text-shadow: 4px 2px 4px lightgrey;
+	grid-area: title;
+	align-self: end;
 }
 
 .label,
 .value {
-	font-size: 1.2vmax;
+	font-size: 1.5rem;
 	color: #585858;
 	padding: 7px;
 }
 
-.stats-button-container {
-	width: 60%;
+.games-played {
+	grid-area: games;
+	align-self: center;
 }
 
-.stats-button {
+.accuracy {
+	grid-area: accuracy;
+	align-self: center;
+}
+
+.attempts {
+	grid-area: attempts;
+	align-self: center;
+}
+
+.stats-button-container {
+	width: 140px;
+	margin: 0 auto;
+	grid-area: buttons;
+	align-self: center;
+}
+
+.stats-button,
+.stats-button-mobile {
 	width: 100%;
 	background-color: whitesmoke;
 	color: lightcoral;
 	border: 2px solid lightcoral;
-	font-size: 1vmax;
+	font-size: 1rem;
 	cursor: pointer;
 	padding: 10%;
 	margin: 5px auto;
+}
+
+.stats-button-mobile {
+	display: none;
+	width: 40%;
 }
 
 .stats-button:hover {
@@ -279,12 +313,79 @@
 	outline: none;
 }
 
+@media screen and (max-width: 1440px) {
+	.stats-title {
+		font-size: 3rem;
+	}
+
+	.label,
+	.value {
+		font-size: 1.2rem;
+		padding: 5px;
+	}
+}
+
+@media screen and (max-width: 1100px) {
+	.stats-container {
+		grid-template-rows: unset;
+		grid-template-columns: repeat(5, 1fr);
+		grid-template-areas: 'title games attempts accuracy buttons';
+	}
+
+	.stats-title {
+		align-self: center;
+	}
+
+	.stats-button-container {
+		display: flex;
+	}
+
+	.stats-button {
+		display: none;
+	}
+
+	.stats-button-mobile {
+		display: block;
+	}
+
+	.label,
+	.value {
+		padding: 3px;
+	}
+
+	.label {
+		font-size: 1rem;
+	}
+}
+
+@media screen and (max-width: 745px) {
+	.stats-container {
+		grid-template-rows: unset;
+		grid-template-columns: repeat(4, 1fr);
+		grid-template-areas: 'games attempts accuracy buttons';
+	}
+
+	.stats-title {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 550px) {
+	.label {
+		font-size: 0.8rem;
+	}
+
+	.stats-button-container {
+		width: 100px;
+	}
+}
+
 /*Main Game Area*/
 .game-area {
-	height: 100%;
-	width: 75%;
-	background-color: rgba(255, 255, 255, 0.7);
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.8);
 	overflow: auto;
+	grid-area: game;
 }
 
 .grid-container {
@@ -294,28 +395,34 @@
 	grid-template-columns: repeat(6, 1fr);
 	grid-template-rows: repeat(3, 1fr);
 	justify-items: center;
-	align-items: center;
 	padding: 10px;
 }
 
 .card {
 	position: relative;
-}
-
-.front {
-	width: auto;
+	align-self: center;
 }
 
 .front > img {
-	height: 180px;
+	height: 25vh;
 }
 
 .back > img {
-	height: 180px;
+	height: 25vh;
 	position: absolute;
 	top: 0;
 	left: 0;
 	opacity: 0.2;
+}
+
+@media screen and (max-width: 1440px) {
+	.front > img {
+		height: 190px;
+	}
+
+	.back > img {
+		height: 190px;
+	}
 }
 
 /* Default modal CSS */

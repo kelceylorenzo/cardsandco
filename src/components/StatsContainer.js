@@ -8,28 +8,26 @@ class StatsContainer extends Component {
 	}
 
 	handleOpenSettings() {
-		this.props.openModal('settings');
+		this.props.openModal();
 	}
 
 	render() {
 		return (
 			<div className="stats-container">
 				<div className="stats-title">STATS</div>
-				<div>
-					<div className="games-played">
-						<div className="label">GAMES PLAYED:</div>
-						<div className="value">{this.props.gamesPlayed}</div>
-					</div>
+				<div className="games-played">
+					<div className="label">GAMES:</div>
+					<div className="value">{this.props.gamesPlayed}</div>
+				</div>
 
-					<div className="attempts">
-						<div className="label">ATTEMPTS:</div>
-						<div className="value">{this.props.attempts}</div>
-					</div>
+				<div className="attempts">
+					<div className="label">ATTEMPTS:</div>
+					<div className="value">{this.props.attempts}</div>
+				</div>
 
-					<div className="accuracy">
-						<div className="label">ACCURACY:</div>
-						<div className="value">{this.props.accuracy}</div>
-					</div>
+				<div className="accuracy">
+					<div className="label">ACCURACY:</div>
+					<div className="value">{this.props.accuracy}</div>
 				</div>
 				<div className="stats-button-container">
 					<button className="stats-button" onClick={this.handleNewGameClick.bind(this)}>
@@ -37,6 +35,13 @@ class StatsContainer extends Component {
 					</button>
 					<button className="stats-button" onClick={this.handleOpenSettings.bind(this)}>
 						SETTINGS
+					</button>
+
+					<button className="stats-button-mobile" onClick={this.handleNewGameClick.bind(this)}>
+						<i className="fas fa-redo-alt" />
+					</button>
+					<button className="stats-button-mobile" onClick={this.handleOpenSettings.bind(this)}>
+						<i className="fas fa-cog" />
 					</button>
 				</div>
 			</div>

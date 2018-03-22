@@ -29,24 +29,10 @@ class MainPage extends Component {
 		}
 	}
 
-	openModal = (modal) => {
-		switch (modal) {
-			case 'settings':
-				this.setState({
-					gameAreaState: <Settings closeModal={this.closeModal} redirectPage={this.redirectPage} />
-				});
-				break;
-			case 'rules':
-				this.setState({
-					gameAreaState: <Rules closeModal={this.closeModal} />
-				});
-				break;
-			case 'about':
-				this.props.history.push('/about');
-				break;
-			default:
-				return;
-		}
+	openModal = () => {
+		this.setState({
+			gameAreaState: <Settings closeModal={this.closeModal} redirectPage={this.redirectPage} />
+		});
 	};
 
 	closeModal = () => {
@@ -82,13 +68,11 @@ class MainPage extends Component {
 		};
 
 		return (
-			<div className="page-container" style={pageStyle}>
+			<div className="page-container main-page-container" style={pageStyle}>
 				<Header />
-				<div className="game-area-container">
-					{this.state.gameAreaState}
-					<StatsContainer openModal={this.openModal} />
-					<GameArea />
-				</div>
+				{this.state.gameAreaState}
+				<StatsContainer openModal={this.openModal} />
+				<GameArea />
 			</div>
 		);
 	}
