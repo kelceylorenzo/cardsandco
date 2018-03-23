@@ -6,6 +6,7 @@ import StatsContainer from './StatsContainer';
 import WinModal from './WinModal';
 import Settings from './Settings';
 import Rules from './Rules';
+import PortraitModal from './PortraitModal';
 import backgroundImage from '../assets/images/Cappadocia-Desktop.png';
 import '../assets/css/app.css';
 
@@ -69,6 +70,7 @@ class MainPage extends Component {
 
 		return (
 			<div className="page-container main-page-container" style={pageStyle}>
+				<PortraitModal />
 				<Header />
 				{this.state.gameAreaState}
 				<StatsContainer openModal={this.openModal} />
