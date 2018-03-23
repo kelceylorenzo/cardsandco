@@ -435,16 +435,6 @@
 	}
 }
 
-/* @media screen and (max-height: 550px) {
-	.front > img {
-		height: 25vh;
-	}
-
-	.back > img {
-		height: 25vh;
-	}
-} */
-
 @media screen and (max-width: 718px) {
 	.grid-container {
 		grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
