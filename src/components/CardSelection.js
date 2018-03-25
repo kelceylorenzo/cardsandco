@@ -7,9 +7,19 @@ import butterfly from '../assets/images/cardpack-butterfly.png';
 import shield from '../assets/images/cardpack-shield.png';
 
 class CardSelection extends Component {
+	constructor(props) {
+		super(props);
+		this.canBeClicked = true;
+	}
+
 	handleCardPackSelection(selection) {
-		this.props.selectCardPack(selection);
-		setTimeout(this.redirectToGamePage.bind(this), 1000);
+		if (this.canBeClicked) {
+			this.canBeClicked = false;
+			this.props.selectCardPack(selection);
+			setTimeout(this.redirectToGamePage.bind(this), 1000);
+		}
+
+		return;
 	}
 
 	redirectToGamePage() {
