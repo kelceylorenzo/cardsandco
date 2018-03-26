@@ -1,12 +1,20 @@
 import React from 'react';
+import backgroundImage from '../assets/images/Cappadocia-Desktop.png';
 
 export default (props) => {
 	function goBack() {
 		props.history.go(-1);
 	}
 
+	const pageStyle = {
+		backgroundImage: `url('${backgroundImage}')`,
+		backgroundSize: 'cover',
+		backgroundRepeat: 'no-repeat',
+		backgroundPosition: 'center'
+	};
+
 	return (
-		<div className="page-container">
+		<div className="page-container" style={pageStyle}>
 			<div className="about-page">
 				<div className="about-content-container">
 					<div className="description-container">
