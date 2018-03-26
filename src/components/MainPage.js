@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
 import Header from './Header';
 import GameArea from './GameArea';
 import StatsContainer from './StatsContainer';
