@@ -442,31 +442,6 @@
 	}
 }
 
-/* iPhone 6/7/8 + iPhone 6/7/8 Plus*/
-
-@media only screen and (min-device-width: 414px) and (max-device-width: 736px) {
-	.main-page-container {
-		grid-gap: 5px;
-	}
-
-	.grid-container {
-		grid-template-columns: repeat(6, 1fr);
-		grid-template-rows: repeat(3, 1fr);
-	}
-
-	.front > img {
-		height: 25vh;
-	}
-
-	.back > img {
-		height: 25vh;
-	}
-
-	.label {
-		font-size: 0.8rem;
-	}
-}
-
 /* Default modal CSS */
 
 .modal-container,
@@ -577,31 +552,6 @@
 
 	.modal-button {
 		padding: 13px;
-	}
-}
-
-/* Portrait Modal */
-
-.portrait-container {
-	display: none;
-	height: 100%;
-	top: 0;
-	background-color: rgba(0, 0, 0, 0.8);
-}
-
-.portrait-title {
-	font-size: 1.5rem;
-	font-weight: 600;
-	color: whitesmoke;
-	padding: 0 10px;
-	text-align: center;
-}
-
-@media only screen and (min-device-width: 375px) and (max-device-width: 736px) and (orientation: portrait),
-	only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait),
-	only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
-	.portrait-container {
-		display: flex;
 	}
 }
 
@@ -752,4 +702,81 @@
 	background-color: lightcoral;
 	border: 2px solid lightcoral;
 	color: whitesmoke;
+}
+
+/* Portrait Modal */
+
+.portrait-container {
+	display: none;
+	height: 100%;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+}
+
+.portrait-title {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: whitesmoke;
+	padding: 0 10px;
+	text-align: center;
+}
+
+/* iPhone 6/7/8 + iPhone 6/7/8 Plus*/
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 736px) and (orientation: portrait),
+	only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait),
+	only screen and (min-device-width: 320px) and (max-device-width: 568px) and (orientation: portrait) {
+	.portrait-container {
+		display: flex;
+	}
+
+	.game-area {
+		display: none;
+	}
+
+	.stats-container {
+		display: none;
+	}
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation: landscape),
+	only screen and (min-device-width: 375px) and (max-device-width: 812px) and (orientation: landscape) {
+	.main-page-container {
+		grid-gap: 5px;
+	}
+
+	.grid-container {
+		grid-template-columns: repeat(6, 1fr);
+		grid-template-rows: repeat(3, 1fr);
+	}
+
+	.front > img {
+		height: 25vh;
+	}
+
+	.back > img {
+		height: 25vh;
+	}
+
+	.label {
+		font-size: 0.8rem;
+	}
+
+	.modal-title {
+		font-size: 3rem;
+	}
+
+	.modal-subtitle {
+		font-size: 1rem;
+	}
+
+	.modal-buttons-container {
+		width: 80%;
+	}
+
+	.modal-button {
+		width: 40%;
+		font-size: 0.8rem;
+		padding: 13px;
+	}
 }
