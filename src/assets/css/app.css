@@ -722,7 +722,7 @@
 	text-align: center;
 }
 
-/* iPhone 6/7/8 + iPhone 6/7/8 Plus*/
+/* Phone specific media queries */
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 736px) and (orientation: portrait),
 	only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation: portrait),
