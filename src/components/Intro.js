@@ -3,12 +3,12 @@ import { Link } from 'react-router-dom';
 import backgroundImage from '../assets/images/Cappadocia-Desktop.png';
 
 export default (props) => {
-	const pageStyle = {
+	const background = {
 		backgroundImage: `url('${backgroundImage}')`
 	};
 
 	return (
-		<div className="page-container" style={pageStyle}>
+		<div className="page-container" style={background}>
 			<div className="intro-page">
 				<div className="intro-container">
 					<div className="intro-title">Cards&Co.</div>

@@ -6,15 +6,12 @@ export default (props) => {
 		props.history.go(-1);
 	}
 
-	const pageStyle = {
-		backgroundImage: `url('${backgroundImage}')`,
-		backgroundSize: 'cover',
-		backgroundRepeat: 'no-repeat',
-		backgroundPosition: 'center'
+	const background = {
+		backgroundImage: `url('${backgroundImage}')`
 	};
 
 	return (
-		<div className="page-container" style={pageStyle}>
+		<div className="page-container" style={background}>
 			<div className="about-page">
 				<div className="about-content-container">
 					<div className="description-container">

@@ -29,14 +29,11 @@ class CardSelection extends Component {
 	}
 
 	render() {
-		const pageStyle = {
-			backgroundImage: `url('${backgroundImage}')`,
-			backgroundSize: 'cover',
-			backgroundRepeat: 'no-repeat',
-			backgroundPosition: 'center'
+		const background = {
+			backgroundImage: `url('${backgroundImage}')`
 		};
 		return (
-			<div className="page-container cardpack-selection-page" style={pageStyle}>
+			<div className="page-container cardpack-selection-page" style={background}>
 				<div className="cardpack-selection-page">
 					<div className="cardpack-selection-title">select your card pack</div>
 

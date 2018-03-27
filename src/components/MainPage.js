@@ -62,15 +62,12 @@ class MainPage extends Component {
 	};
 
 	render() {
-		const pageStyle = {
-			backgroundImage: `url('${backgroundImage}')`,
-			backgroundSize: 'cover',
-			backgroundRepeat: 'no-repeat',
-			backgroundPosition: 'center'
+		const background = {
+			backgroundImage: `url('${backgroundImage}')`
 		};
 
 		return (
-			<div className="page-container main-page-container" style={pageStyle}>
+			<div className="page-container main-page-container" style={background}>
 				<PortraitModal />
 				<Header />
 				{this.state.gameAreaState}
