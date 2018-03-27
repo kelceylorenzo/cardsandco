@@ -4,14 +4,12 @@ import backgroundImage from '../assets/images/Cappadocia-Desktop.png';
 
 export default (props) => {
 	const pageStyle = {
-		backgroundImage: `url('${backgroundImage}')`,
-		backgroundSize: 'cover',
-		backgroundRepeat: 'no-repeat',
-		backgroundPosition: 'center'
+		backgroundImage: `url('${backgroundImage}')`
 	};
+
 	return (
-		<div style={pageStyle}>
-			<div className="page-container intro-page">
+		<div className="page-container" style={pageStyle}>
+			<div className="intro-page">
 				<div className="intro-container">
 					<div className="intro-title">Cards&Co.</div>
 					<div className="intro-subtitle">A MEMORY MATCH GAME</div>
