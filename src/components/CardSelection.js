@@ -36,8 +36,8 @@ class CardSelection extends Component {
 			backgroundPosition: 'center'
 		};
 		return (
-			<div style={pageStyle}>
-				<div className="page-container cardpack-selection-page">
+			<div className="page-container cardpack-selection-page" style={pageStyle}>
+				<div className="cardpack-selection-page">
 					<div className="cardpack-selection-title">select your card pack</div>
 
 					<div className="cardpack-selectors">
