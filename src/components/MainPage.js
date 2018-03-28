@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 import Header from './Header';
 import GameArea from './GameArea';
@@ -9,7 +10,6 @@ import Settings from './Settings';
 import Rules from './Rules';
 import PortraitModal from './PortraitModal';
 import backgroundImage from '../assets/images/Cappadocia-Desktop.png';
-import '../assets/css/app.css';
 
 class MainPage extends Component {
 	constructor(props) {
@@ -22,7 +22,11 @@ class MainPage extends Component {
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.numberOfMatches === nextProps.numberOfCards / 2 && nextProps.numberOfCards !== 0) {
 			this.setState({
-				gameAreaState: <WinModal closeModal={this.closeModal} />
+				gameAreaState: (
+					<CSSTransition key="win-modal" classNames="fade" timeout={500}>
+						<WinModal closeModal={this.closeModal} />
+					</CSSTransition>
+				)
 			});
 		} else {
 			this.setState({
@@ -33,7 +37,11 @@ class MainPage extends Component {
 
 	openModal = () => {
 		this.setState({
-			gameAreaState: <Settings closeModal={this.closeModal} redirectPage={this.redirectPage} />
+			gameAreaState: (
+				<CSSTransition key="settings-modal" classNames="fade" timeout={500}>
+					<Settings closeModal={this.closeModal} redirectPage={this.redirectPage} />
+				</CSSTransition>
+			)
 		});
 	};
 
@@ -70,7 +78,7 @@ class MainPage extends Component {
 			<div className="page-container main-page-container" style={background}>
 				<PortraitModal />
 				<Header />
-				{this.state.gameAreaState}
+				<TransitionGroup component="div">{this.state.gameAreaState}</TransitionGroup>
 				<StatsContainer openModal={this.openModal} />
 				<GameArea />
 			</div>
