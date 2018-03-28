@@ -1,5 +1,5 @@
 import types from '../actions/types';
-import createCards from '../data/createCards';
+import createCards from '../HOC/createCards';
 
 const DEFAULT_STATE = {
 	numberOfCards: 0,
