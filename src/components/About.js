@@ -15,7 +15,7 @@ export default (props) => {
 			<div className="about-page">
 				<div className="about-content-container">
 					<div className="description-container">
-						<div className="tagline">select your pack, unlock companions, "play beautifully"</div>
+						<div className="tagline">select your pack, match companions, "play beautifully"</div>
 						<div className="description">
 							Based on "Dots & Co" by game company DOTS, "Cards & Co" takes the cute companions from
 							the adored original and transports them into this memory match game. Developer, Kelcey
