@@ -1,5 +1,5 @@
 import types from '../actions/types';
-import createCards from '../HOC/createCards';
+import { createCards, revealCard, checkPair, revertCards } from '../HOC';
 
 const DEFAULT_STATE = {
 	numberOfCards: 0,
@@ -36,99 +36,18 @@ export default function(state = DEFAULT_STATE, action) {
 				gameBoardCheck: new Array(18).fill(false)
 			};
 		case types.REVEAL_CARD:
-			let { firstCardClicked, secondCardClicked, gameBoardCheck, canBeClicked } = state;
-			const { cardIndex, cardFront } = action.payload;
-
-			//checking that clicked card is not already flipped, the same as the first card clicked, or two unmatched cards have not been reset
-			if (gameBoardCheck[cardIndex] || firstCardClicked === action.payload || !canBeClicked) {
-				return state;
-			}
-
-			//if first card clicked
-			if (!firstCardClicked) {
-				firstCardClicked = action.payload;
-				gameBoardCheck[cardIndex] = true;
-				return {
-					...state,
-					firstCardClicked: action.payload,
-					gameBoardCheck
-				};
-			}
-
-			//if second card clicked
-			gameBoardCheck[cardIndex] = true;
-
-			return {
-				...state,
-				secondCardClicked: action.payload,
-				gameBoardCheck,
-				canBeClicked: false
-			};
+			return revealCard(state, action.payload);
 
 		case types.CHECK_PAIR:
-			let { gamesPlayed, attempts, accuracy, numberOfMatches, numberOfCards } = state;
+			return checkPair(state);
 
-			attempts++;
-
-			//if two cards clicked are the same
-			if (state.firstCardClicked.cardFront === state.secondCardClicked.cardFront) {
-				numberOfMatches++;
-				accuracy = `${(numberOfMatches / attempts * 100).toFixed(1)}%`;
-
-				//if player has matched all the cards
-				if (numberOfMatches === numberOfCards / 2) {
-					return {
-						...state,
-						attempts,
-						numberOfMatches,
-						accuracy,
-						gamesPlayed: gamesPlayed + 1
-					};
-				}
-				//if player has not matched all the cards
-				return {
-					...state,
-					firstCardClicked: null,
-					secondCardClicked: null,
-					attempts,
-					accuracy,
-					numberOfMatches,
-					canBeClicked: true
-				};
-			}
-
-			//if two cards clicked are not the same
-			accuracy = `${(numberOfMatches / attempts * 100).toFixed(1)}%`;
-
-			return {
-				...state,
-				attempts,
-				accuracy,
-				noMatch: true
-			};
 		case types.REVERT_CARDS:
-			//check to ensure that cards have not been reset to null
-			if (state.firstCardClicked === null) {
-				return state;
-			}
-
-			//resetting
-			let newGameBoardCheck = state.gameBoardCheck;
-			newGameBoardCheck[state.firstCardClicked.cardIndex] = false;
-			newGameBoardCheck[state.secondCardClicked.cardIndex] = false;
-			return {
-				...state,
-				firstCardClicked: null,
-				secondCardClicked: null,
-				gameBoardCheck: newGameBoardCheck,
-				canBeClicked: true,
-				noMatch: false
-			};
+			return revertCards(state);
 
 		case types.RESET_GAME:
-			let newGamesPlayed = state.gamesPlayed;
+			let { gamesPlayed, numberOfMatches, numberOfCards } = state;
 
-			if (state.numberOfMatches === state.numberOfCards / 2) {
+			if (numberOfMatches === numberOfCards / 2) {
 				return {
 					...state,
 					numberOfCards: 18,
@@ -154,7 +73,7 @@ export default function(state = DEFAULT_STATE, action) {
 				secondCardClicked: null,
 				canBeClicked: true,
 				noMatch: false,
-				gamesPlayed: newGamesPlayed + 1,
+				gamesPlayed: gamesPlayed + 1,
 				attempts: 0,
 				accuracy: '---'
 			};
