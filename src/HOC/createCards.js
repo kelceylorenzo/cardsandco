@@ -1,4 +1,4 @@
-import cardImages from './gameImages';
+import cardImages from '../data/gameImages';
 
 export default () => {
 	let originalCardImages = cardImages.slice();
