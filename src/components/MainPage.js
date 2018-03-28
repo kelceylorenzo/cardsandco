@@ -23,7 +23,7 @@ class MainPage extends Component {
 		if (nextProps.numberOfMatches === nextProps.numberOfCards / 2 && nextProps.numberOfCards !== 0) {
 			this.setState({
 				gameAreaState: (
-					<CSSTransition key="win-modal" classNames="fade" timeout={500}>
+					<CSSTransition key="win-modal" classNames="modal" timeout={500}>
 						<WinModal closeModal={this.closeModal} />
 					</CSSTransition>
 				)
@@ -38,7 +38,7 @@ class MainPage extends Component {
 	openModal = () => {
 		this.setState({
 			gameAreaState: (
-				<CSSTransition key="settings-modal" classNames="fade" timeout={500}>
+				<CSSTransition key="settings-modal" classNames="modal" timeout={500}>
 					<Settings closeModal={this.closeModal} redirectPage={this.redirectPage} />
 				</CSSTransition>
 			)
