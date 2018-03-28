@@ -2,7 +2,7 @@
 
 > Based off the mobile game "Dots&Co", Cards&Co is a memory match game built in ReactJS and Redux and styled with Flexbox and CSS Grid.
 
-## Getting Started
+## Game Play
 
 > Select a card pack out of four possible choices and find all the match pairs of companions to win the game!
 
@@ -37,5 +37,3 @@
 ## Author
 
 *   Kelcey Lorenzo [GitHub](https://github.com/m13kelore) | [Portfolio](https://kelceylorenzo.com/)
-
-## About the Project
