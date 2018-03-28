@@ -5,6 +5,7 @@
 ## Game Play
 
 > Select a card pack out of four possible choices and find all the match pairs of companions to win the game!
+> [Live Demo](https://cardsandco.kelceylorenzo.com)
 
 | ![Landing Page](src/assets/images/cardsandco-1.png) | ![Select Card Pack](src/assets/images/cardsandco-2.png) |
 | :-------------------------------------------------: | :-----------------------------------------------------: |
