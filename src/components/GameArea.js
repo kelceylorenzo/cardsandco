@@ -9,7 +9,7 @@ import anchor from '../assets/images/anchor-normal.png';
 
 class GameArea extends Component {
 	componentDidMount() {
-		this.props.createCards();
+		setTimeout(this.props.createCards, 250);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -40,7 +40,7 @@ class GameArea extends Component {
 		});
 		return (
 			<div className="game-area">
-				<div className="grid-container">{cards}</div>
+				<div className={'grid-container' + (this.props.cardFronts[0] ? ' show' : '')}>{cards}</div>
 			</div>
 		);
 	}

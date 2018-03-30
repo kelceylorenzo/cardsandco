@@ -397,6 +397,12 @@
 	grid-template-rows: repeat(3, 1fr);
 	justify-items: center;
 	padding: 10px;
+	opacity: 0;
+	transition: opacity 750ms linear;
+}
+
+.grid-container.show {
+	opacity: 1;
 }
 
 .card {
