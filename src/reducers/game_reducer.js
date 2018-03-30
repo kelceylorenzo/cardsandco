@@ -47,22 +47,6 @@ export default function(state = DEFAULT_STATE, action) {
 		case types.RESET_GAME:
 			let { gamesPlayed, numberOfMatches, numberOfCards } = state;
 
-			if (numberOfMatches === numberOfCards / 2) {
-				return {
-					...state,
-					numberOfCards: 18,
-					numberOfMatches: 0,
-					cardFronts: [],
-					gameBoardCheck: new Array(18).fill(false),
-					firstCardClicked: null,
-					secondCardClicked: null,
-					canBeClicked: true,
-					noMatch: false,
-					attempts: 0,
-					accuracy: '---'
-				};
-			}
-
 			return {
 				...state,
 				numberOfCards: 18,

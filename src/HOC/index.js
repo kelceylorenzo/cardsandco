@@ -85,8 +85,7 @@ export const checkPair = (state) => {
 				...state,
 				attempts,
 				numberOfMatches,
-				accuracy,
-				gamesPlayed: gamesPlayed + 1
+				accuracy
 			};
 		}
 		//if player has not matched all the cards
