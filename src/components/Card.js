@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { revealCard, revertCards } from '../actions';
 
 class Card extends Component {
+	constructor(props) {
+		super(props);
+	}
+
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.noMatch) {
 			this.resetCards = setTimeout(this.props.revertCards, 1000);
@@ -14,17 +18,17 @@ class Card extends Component {
 	}
 
 	render() {
-		let style = {
+		let backStyle = {
 			display: ''
 		};
 
 		if (this.props.gameBoardCheck[this.props.index]) {
-			style.display = 'none';
+			backStyle.display = 'none';
 		}
 
 		return (
 			<div className="card" onClick={this.cardClicked.bind(this)}>
-				<div className="back" style={style}>
+				<div className="back" style={backStyle}>
 					<img src={this.props.cardPack} />
 				</div>
 				<div className="front">

@@ -80,7 +80,7 @@ class MainPage extends Component {
 				<Header />
 				<TransitionGroup component="div">{this.state.gameAreaState}</TransitionGroup>
 				<StatsContainer openModal={this.openModal} />
-				<GameArea />
+				<GameArea key={this.props.gamesPlayed} />
 			</div>
 		);
 	}
@@ -89,7 +89,8 @@ class MainPage extends Component {
 function mapStateToProps(state) {
 	return {
 		numberOfMatches: state.game.numberOfMatches,
-		numberOfCards: state.game.numberOfCards
+		numberOfCards: state.game.numberOfCards,
+		gamesPlayed: state.game.gamesPlayed
 	};
 }
 
